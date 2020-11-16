@@ -576,7 +576,7 @@ module.exports = HandleMsg = async (aruga, message) => {
                     aruga.reply(from, 'Error!', id)
                 })
             } else {
-                aruga.reply(from, `Lo sentimos el comando es erroneo usa${prefix}anime para ver la lista de variantes disponibles.)
+                aruga.reply(from, `Lo sentimos el comando es erroneo usa${prefix}anime para ver la lista de variantes disponibles.`)
             }
             break
         case 'kpop':
