@@ -1000,30 +1000,30 @@ module.exports = HandleMsg = async (aruga, message) => {
             }
             break
         case 'bc': //untuk broadcast atau promosi
-            if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot!', id)
-            if (args.length == 0) return aruga.reply(from, `Untuk broadcast ke semua chat ketik:\n${prefix}bc [isi chat]`)
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *OFFLINE* dueño del bot', id)
+            if (args.length == 0) return aruga.reply(from, `Para enviar este comando usa:\n${prefix}bc [mensaje]`)
             let msg = body.slice(4)
             const chatz = await aruga.getAllChatIds()
             for (let idk of chatz) {
                 var cvk = await aruga.getChatById(idk)
-                if (!cvk.isReadOnly) aruga.sendText(idk, `〘 *A R U G A  B C* 〙\n\n${msg}`)
-                if (cvk.isReadOnly) aruga.sendText(idk, `〘 *A R U G A  B C* 〙\n\n${msg}`)
+                if (!cvk.isReadOnly) aruga.sendText(idk, `〘 *_OFFLINE_* 〙\n\n${msg}`)
+                if (cvk.isReadOnly) aruga.sendText(idk, `〘 *_OFFLINE_* 〙\n\n${msg}`)
             }
-            aruga.reply(from, 'Broadcast Success!', id)
+            aruga.reply(from, 'Broadcast Enviado Con Exito!', id)
             break
         case 'leaveall': //mengeluarkan bot dari semua group serta menghapus chatnya
-            if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot', id)
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *OFFLINE* dueño del bot', id)
             const allChatz = await aruga.getAllChatIds()
             const allGroupz = await aruga.getAllGroups()
             for (let gclist of allGroupz) {
-                await aruga.sendText(gclist.contact.id, `Maaf bot sedang pembersihan, total chat aktif : ${allChatz.length}`)
+                await aruga.sendText(gclist.contact.id, `Lo siento, el bot está limpiando, el chat total está activo: ${allChatz.length}`)
                 await aruga.leaveGroup(gclist.contact.id)
                 await aruga.deleteChat(gclist.contact.id)
             }
             aruga.reply(from, 'Success leave all group!', id)
             break
         case 'clearall': //menghapus seluruh pesan diakun bot
-            if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot', id)
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *OFFLINE* dueño del bot', id)
             const allChatx = await aruga.getAllChats()
             for (let dchat of allChatx) {
                 await aruga.deleteChat(dchat.id)
