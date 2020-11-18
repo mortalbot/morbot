@@ -5,7 +5,7 @@
 <a href="#"><img title="Whatsapp-Bot" src="https://img.shields.io/badge/Whatsapp Bot-green?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 </p>
 <p align="center">
-<a href="https://github.com/ArugaZ"><img title="Author" src="https://img.shields.io/badge/AUTHOR-ARUGAZ-orange.svg?style=for-the-badge&logo=github"></a>
+<a href="https://github.com/ArugaZ"><img title="Author" src="https://img.shields.io/badge/Autor-NotChaynz-blue?style=for-the-badge&logo=github"></a>
 </p>
 <p align="center">
 <a href="https://www.codefactor.io/repository/github/arugaz/whatsapp-bot/overview/master"><img title="Rating" src="https://www.codefactor.io/repository/github/arugaz/whatsapp-bot/badge/master"></a>
@@ -27,8 +27,8 @@
 
 ini semua gratis, jangan pelit ⭐️ ya :D
 <p align="center"><a href="https://arugaz.herokuapp.com/" target="_blank">Free Rest APIs</a>.</p>
-<p align="center"><a href="https://wa.me/6281574780701?text=%23menu" target="_blank">My Whatsapp BOT</a>.</p>
-<p align="center"><a href="https://wa.me/6281355538777?text=hi" target="_blank">My Whatsapp</a>.</p>
+<p align="center"><a href="https://wa.me/50662022222?text=%23menu" target="_blank">Mi BOT de WhatsApp</a>.</p>
+<p align="center"><a href="https://wa.me/17066666666?text=hi" target="_blank">Mi Whatsapp</a>.</p>
 </div>
 
 ## Getting Started
