@@ -146,7 +146,7 @@ module.exports = HandleMsg = async (aruga, message) => {
             if (!isGroupAdmins) return aruga.reply(from, 'Falló, este comando solo puede ser utilizado por los administradores del grupo.', id)
             await aruga.sendText(from, menuId.textAdmin())
             break
-        case 'donate':
+        case 'notchaynz':
         case 'donasi':
             if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotChaynz* dueño del bot', id)
             await aruga.sendText(from, menuId.textDonasi())
@@ -155,9 +155,9 @@ module.exports = HandleMsg = async (aruga, message) => {
             await aruga.sendContact(from, ownerNumber)
             .then(() => aruga.sendText(from, 'Si desea solicitar una función, Escribeme a mi numero personal.'))
             break
-        case 'NotChaynz':
+        case 'kevin':
             if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotChaynz* dueño del bot', id)
-            await aruga.sendText(from, menuId.textChaynzOwner())
+            await aruga.sendText(from, menuId.textKevin())
             break
         case 'join':
             if (args.length == 0) return aruga.reply(from, `Si deseas invitar a el bot a tu grupo invitalo\no usa ${prefix}join [Enlace del grupo]`, id)
