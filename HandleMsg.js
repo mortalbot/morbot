@@ -156,7 +156,7 @@ module.exports = HandleMsg = async (aruga, message) => {
             break
         case 'NotChaynz':
             if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotChaynz* dueño del bot', id)
-            await aruga.sendText(from, menuId.textChaynzOwner())
+            await aruga.sendText(from, menuId.textChaynz())
             break
         case 'join':
             if (args.length == 0) return aruga.reply(from, `Jika kalian ingin mengundang bot kegroup silahkan invite atau dengan\nketik ${prefix}join [link group]`, id)
@@ -1033,6 +1033,20 @@ module.exports = HandleMsg = async (aruga, message) => {
                 await aruga.deleteChat(dchat.id)
             }
             aruga.reply(from, 'El chat se ha borrado exitosamente', id)
+            break
+        case 'ban':
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotChaynz* dueño del bot', id)
+            if (args.length == 0) return aruga.reply(from, `Para prohibir que alguien use comandos\n\nuse \n${prefix}ban add xxxxx (Para Agregar A Alguien A La Lista Negra)\n${prefix}ban del xxxxx (Para Eliminar A Alguien De La Lista Negra)\n\nPara añadir mas rapidamente a mas de una persona simplemente usar:\n${prefix}ban @tag @tag @tag`, id)
+                aruga.reply(from, 'Usuario Baneado Con Exito!')
+            break
+            } else
+        case 'NotChaynz': //untuk broadcast atau promosi
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotChaynz* dueño del bot', id)
+            aruga.reply(from, 'Comandos Del Dueño Del Bot:
+-❥ *${prefix}ban* - Banear a un usuario para que no use comandos.
+-❥ *${prefix}bc* - Enviar mensajes a todos los usuarios y grupos donde esta el bot.
+-❥ *${prefix}leaveall* - Salir de todos los grupos.
+-❥ *${prefix}clearall* - Eliminar todos los chats y grupos de la pantalla de inicio.*', id)
             break
         default:
             break
