@@ -154,6 +154,10 @@ module.exports = HandleMsg = async (aruga, message) => {
             await aruga.sendContact(from, ownerNumber)
             .then(() => aruga.sendText(from, 'Jika kalian ingin request fitur silahkan chat nomor owner!'))
             break
+        case 'NotChaynz':
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotChaynz* dueño del bot', id)
+            await aruga.sendText(from, menuId.textChaynzOwner)
+            break
         case 'join':
             if (args.length == 0) return aruga.reply(from, `Jika kalian ingin mengundang bot kegroup silahkan invite atau dengan\nketik ${prefix}join [link group]`, id)
             let linkgrup = body.slice(6)
