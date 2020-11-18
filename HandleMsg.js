@@ -142,41 +142,42 @@ module.exports = HandleMsg = async (aruga, message) => {
             .then(() => ((isGroupMsg) && (isGroupAdmins)) ? aruga.sendText(from, `Menu Admin Grup: *${prefix}menuadmin*`) : null)
             break
         case 'menuadmin':
-            if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
-            if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
+            if (!isGroupMsg) return aruga.reply(from, '¡este comando solo se puede usar dentro de grupos!', id)
+            if (!isGroupAdmins) return aruga.reply(from, 'Falló, este comando solo puede ser utilizado por los administradores del grupo.', id)
             await aruga.sendText(from, menuId.textAdmin())
             break
         case 'donate':
         case 'donasi':
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotChaynz* dueño del bot', id)
             await aruga.sendText(from, menuId.textDonasi())
             break
         case 'ownerbot':
             await aruga.sendContact(from, ownerNumber)
-            .then(() => aruga.sendText(from, 'Jika kalian ingin request fitur silahkan chat nomor owner!'))
+            .then(() => aruga.sendText(from, 'Si desea solicitar una función, Escribeme a mi numero personal.'))
             break
         case 'NotChaynz':
             if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotChaynz* dueño del bot', id)
             await aruga.sendText(from, menuId.textChaynzOwner())
             break
         case 'join':
-            if (args.length == 0) return aruga.reply(from, `Jika kalian ingin mengundang bot kegroup silahkan invite atau dengan\nketik ${prefix}join [link group]`, id)
+            if (args.length == 0) return aruga.reply(from, `Si deseas invitar a el bot a tu grupo invitalo\no usa ${prefix}join [Enlace del grupo]`, id)
             let linkgrup = body.slice(6)
             let islink = linkgrup.match(/(https:\/\/chat.whatsapp.com)/gi)
             let chekgrup = await aruga.inviteInfo(linkgrup)
-            if (!islink) return aruga.reply(from, 'Maaf link group-nya salah! silahkan kirim link yang benar', id)
+            if (!islink) return aruga.reply(from, 'Lo sentimos, el enlace del grupo es incorrecto envía el enlace correcto', id)
             if (isOwnerBot) {
                 await aruga.joinGroupViaLink(linkgrup)
                       .then(async () => {
-                          await aruga.sendText(from, 'Berhasil join grup via link!')
-                          await aruga.sendText(chekgrup.id, `Hai minna~, Im Aruga BOT. To find out the commands on this bot type ${prefix}menu`)
+                          await aruga.sendText(from, '¡Se unió al grupo con éxito a través del enlace!')
+                          await aruga.sendText(chekgrup.id, `Que Onda~, soy Aruga BOT. Para averiguar los comandos de este tipo de bot ${prefix}menu`)
                       })
             } else {
                 let cgrup = await aruga.getAllGroups()
-                if (cgrup.length > groupLimit) return aruga.reply(from, `Sorry, the group on this bot is full\nMax Group is: ${groupLimit}`, id)
-                if (cgrup.size < memberLimit) return aruga.reply(from, `Sorry, BOT wil not join if the group members do not exceed ${memberLimit} people`, id)
+                if (cgrup.length > groupLimit) return aruga.reply(from, `Lo siento, el grupo de este bot está lleno\nel maximo del grupo es: ${groupLimit}`, id)
+                if (cgrup.size < memberLimit) return aruga.reply(from, `El bot no se unira si el grupo execede el limite de usuarios. ${memberLimit} usuarios`, id)
                 await aruga.joinGroupViaLink(linkgrup)
                       .then(async () =>{
-                          await aruga.reply(from, 'Berhasil join grup via link!', id)
+                          await aruga.reply(from, 'Se unió al grupo con éxito a través del enlace!', id)
                       })
                       .catch(() => {
                           aruga.reply(from, 'Gagal!', id)
