@@ -876,24 +876,24 @@ module.exports = HandleMsg = async (aruga, message) => {
             await aruga.sendTextWithMentions(from, `Solicitud aceptada, el usuario @${mentionedJidList[0].replace('@c.us', '')} a sido agregado como administrador.`)
             break
         case 'demote':
-            if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
-            if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
-            if (!isBotGroupAdmins) return aruga.reply(from, 'Gagal, silahkan tambahkan bot sebagai admin grup!', id)
-            if (mentionedJidList.length !== 1) return aruga.reply(from, 'Maaf, hanya bisa mendemote 1 user', id)
-            if (!groupAdmins.includes(mentionedJidList[0])) return await aruga.reply(from, 'Maaf, user tersebut belum menjadi admin.', id)
-            if (mentionedJidList[0] === botNumber) return await aruga.reply(from, 'Maaf, format pesan salah.\nTidak dapat mendemote akun bot sendiri', id)
+            if (!isGroupMsg) return aruga.reply(from, 'Este comando solo se puede usar dentro de grupos!', id)
+            if (!isGroupAdmins) return aruga.reply(from, 'Falló, este comando solo puede ser utilizado por los administradores del grupo.', id)
+            if (!isBotGroupAdmins) return aruga.reply(from, 'Falló, agregue el bot como administrador del grupo.', id)
+            if (mentionedJidList.length !== 1) return aruga.reply(from, 'Solo se puede quitar administración a 1 usuario a la vez', id)
+            if (!groupAdmins.includes(mentionedJidList[0])) return await aruga.reply(from, 'El usuario aún no es administrador.', id)
+            if (mentionedJidList[0] === botNumber) return await aruga.reply(from, 'Lo siento, el formato del mensaje es incorrecto.\nNo puedes quitarle administración al bot si no es administrador.', id)
             await aruga.demoteParticipant(groupId, mentionedJidList[0])
-            await aruga.sendTextWithMentions(from, `Request diterima, menghapus jabatan @${mentionedJidList[0].replace('@c.us', '')}.`)
+            await aruga.sendTextWithMentions(from, `Solicitud aceptada, administración quitada. @${mentionedJidList[0].replace('@c.us', '')}.`)
             break
         case 'bye':
-            if (!isGroupMsg) return aruga.reply(from, 'Maaf, perintah ini hanya dapat dipakai didalam grup!', id)
-            if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
+            if (!isGroupMsg) return aruga.reply(from, 'Este comando solo se puede usar dentro de un grupo!', id)
+            if (!isGroupAdmins) return aruga.reply(from, 'Falló, este comando solo puede ser utilizado por los administradores del grupo.', id)
             aruga.sendText(from, 'Bueno nos vemos, me pidieron que me saliera del grupo y no quiero molestar... ( ⇀‸↼‶ )').then(() => aruga.leaveGroup(groupId))
             break
         case 'del':
-            if (!isGroupAdmins) return aruga.reply(from, 'Gagal, perintah ini hanya dapat digunakan oleh admin grup!', id)
-            if (!quotedMsg) return aruga.reply(from, `Maaf, format pesan salah silahkan.\nReply pesan bot dengan caption ${prefix}del`, id)
-            if (!quotedMsgObj.fromMe) return aruga.reply(from, `Maaf, format pesan salah silahkan.\nReply pesan bot dengan caption ${prefix}del`, id)
+            if (!isGroupAdmins) return aruga.reply(from, 'Falló, este comando solo puede ser utilizado por los administradores del grupo.', id)
+            if (!quotedMsg) return aruga.reply(from, `Para borrar mensajes enviados por el bot simplemente mencionalos y usa el comando ${prefix}del`, id)
+            if (!quotedMsgObj.fromMe) return aruga.reply(from, `Lo sentimos, el formato del mensaje es incorrecto, por favor.\nusa ${prefix}del`, id)
             aruga.deleteMessage(quotedMsgObj.chatId, quotedMsgObj.id, false)
             break
         case 'tagall':
