@@ -979,23 +979,23 @@ module.exports = HandleMsg = async (aruga, message) => {
 
         //Owner Bot
         case 'ban':
-            if (!isOwnerBot) return aruga.reply(from, 'Perintah ini hanya untuk Owner bot!', id)
-            if (args.length == 0) return aruga.reply(from, `Untuk banned seseorang agar tidak bisa menggunakan commands\n\nCaranya ketik: \n${prefix}ban add 628xx --untuk mengaktifkan\n${prefix}ban del 628xx --untuk nonaktifkan\n\ncara cepat ban banyak digrup ketik:\n${prefix}ban @tag @tag @tag`, id)
+            if (!isOwnerBot) return aruga.reply(from, 'Este comando solo lo puede usar *NotChaynz* dueño del bot', id)
+            if (args.length == 0) return aruga.reply(from, `Para prohibir que alguien use comandos\n\nuse \n${prefix}ban add xxxxx (Para Agregar A Alguien A La Lista Negra)\n${prefix}ban del xxxxx (Para Eliminar A Alguien De La Lista Negra)\n\nPara añadir mas rapidamente a mas de una persona simplemente usar:\n${prefix}ban @tag @tag @tag`, id)
             if (args[0] == 'add') {
                 banned.push(args[1]+'@c.us')
                 fs.writeFileSync('./settings/banned.json', JSON.stringify(banned))
-                aruga.reply(from, 'Success banned target!')
+                aruga.reply(from, 'Usuario Baneado Con Exito!')
             } else
             if (args[0] == 'del') {
                 let xnxx = banned.indexOf(args[1]+'@c.us')
                 banned.splice(xnxx,1)
                 fs.writeFileSync('./settings/banned.json', JSON.stringify(banned))
-                aruga.reply(from, 'Success unbanned target!')
+                aruga.reply(from, 'Usuario desbaneado Con Exito!')
             } else {
              for (let i = 0; i < mentionedJidList.length; i++) {
                 banned.push(mentionedJidList[i])
                 fs.writeFileSync('./settings/banned.json', JSON.stringify(banned))
-                aruga.reply(from, 'Success ban target!', id)
+                aruga.reply(from, 'Usuarios Baneados Con Exito!', id)
                 }
             }
             break
